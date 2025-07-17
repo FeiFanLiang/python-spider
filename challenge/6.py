@@ -37,15 +37,8 @@ def start():
         if result:
             print(result)
             total.append(result)
-
-
-
     all_total = reduce(lambda x, y: x + y, total, 0)
     print(all_total)
-
-
-
-
 
 
 
