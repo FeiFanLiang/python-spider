@@ -1,6 +1,7 @@
 import requests
 import execjs
 import re
+from bs4 import  BeautifulSoup
 
 
 # 纯算还原
@@ -153,9 +154,7 @@ import re
 #       .pop()
 #   )
 
-def request():
-
-    res = requests.request('GET',url='https://www.python-spider.com/challenge/11',headers={
+headers = {
         'accept': '*/*',
         'accept-language': 'zh-CN,zh;q=0.9',
         'cache-control': 'no-cache',
@@ -163,7 +162,7 @@ def request():
         'origin': 'https://www.python-spider.com',
         'pragma': 'no-cache',
         'priority': 'u=0, i',
-        'referer': 'https://www.python-spider.com/challenge/7',
+        'referer': 'https://www.python-spider.com/challenge/11',
         'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Google Chrome";v="138"',
         'sec-ch-ua-mobile': '?0',
         'sec-ch-ua-platform': '"macOS"',
@@ -171,13 +170,29 @@ def request():
         'sec-fetch-mode': 'cors',
         'sec-fetch-site': 'same-origin',
         'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36',
-        'Cookie': 'sessionid=6q3kpq7evxbqx5wd26kthw8937b2x5l4;'
+    }
+
+def request():
+
+    res = requests.request('GET',url='https://www.python-spider.com/challenge/11',headers=headers,cookies={
+        'sessionid':'6q3kpq7evxbqx5wd26kthw8937b2x5l4'
     })
     text = res.text
     if text.startswith('<script>'):
-       r = execjs.eval(text.replace('eval','console.log'))
-       print(r)
-    print(res)
+       script = re.match(r'<script>(.*)</script>',text).group(1)
+       ctx = execjs.compile(script.replace('eval','var str = '))
+       content = ctx.eval('str')
+       prefix = re.search(r"""__jsl_clearance=(.*)\'\+""",content).group(1)
+       value = re.search(r"""0]\)],'(\w{5,})'""",content).group(1)
+       cookie_value = f'{prefix}clD4VpfqhdaLBWywKWy%2FZyfi6d{value}3D'
+    res2 = requests.request('GET',url='https://www.python-spider.com/challenge/11',headers=headers,cookies={
+        'sessionid':'6q3kpq7evxbqx5wd26kthw8937b2x5l4',
+        '__jsl_clearance':cookie_value
+    })
+    html = BeautifulSoup(res2.text,'html.parser')
+    tables = html.find_all('td',class_='info')
+    values = sum([int(x.getText().strip()) for x in tables])
+    print(values)
 
 
 if __name__ == '__main__':

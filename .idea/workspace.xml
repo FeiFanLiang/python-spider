@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a28e55aa-525a-437e-93b4-1837896ce104" name="更改" comment="6">
-      <change afterPath="$PROJECT_DIR$/challenge/11.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/challenge/7.py" afterDir="false" />
+    <list default="true" id="a28e55aa-525a-437e-93b4-1837896ce104" name="更改" comment="11">
+      <change afterPath="$PROJECT_DIR$/challenge/12.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/challenge/14.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/challenge/6.py" beforeDir="false" afterPath="$PROJECT_DIR$/challenge/6.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/challenge/11.py" beforeDir="false" afterPath="$PROJECT_DIR$/challenge/11.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,26 +38,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python.1.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.11.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.2.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.6.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.7.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.cookies.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.1.executor": "Debug",
+    "Python.11.executor": "Debug",
+    "Python.12.executor": "Debug",
+    "Python.14.executor": "Debug",
+    "Python.2.executor": "Debug",
+    "Python.6.executor": "Debug",
+    "Python.7.executor": "Debug",
+    "Python.cookies.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -76,7 +78,9 @@
       <workItem from="1752028795769" duration="12084000" />
       <workItem from="1752203637664" duration="21411000" />
       <workItem from="1752464096877" duration="5826000" />
-      <workItem from="1752743159773" duration="3873000" />
+      <workItem from="1752743159773" duration="4644000" />
+      <workItem from="1752804643669" duration="2000" />
+      <workItem from="1752806480522" duration="17155000" />
     </task>
     <task id="LOCAL-00001" summary="初始化">
       <option name="closed" value="true" />
@@ -94,7 +98,15 @@
       <option name="project" value="LOCAL" />
       <updated>1752227588946</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="11">
+      <option name="closed" value="true" />
+      <created>1752751506387</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1752751506387</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -114,7 +126,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="初始化" />
     <MESSAGE value="6" />
-    <option name="LAST_COMMIT_MESSAGE" value="6" />
+    <MESSAGE value="11" />
+    <option name="LAST_COMMIT_MESSAGE" value="11" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -125,29 +138,26 @@
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/challenge/11.py</url>
-          <line>179</line>
-          <option name="timeStamp" value="4" />
+          <url>file://$PROJECT_DIR$/challenge/12.py</url>
+          <line>58</line>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/challenge/11.py</url>
-          <line>178</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/challenge/11.py</url>
-          <line>176</line>
-          <option name="timeStamp" value="6" />
+          <url>file://$PROJECT_DIR$/challenge/14.py</url>
+          <line>56</line>
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/python_spider$cookies.coverage" NAME="cookies 覆盖结果" MODIFIED="1752223686203" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/.venv/lib/python3.9/site-packages/requests" />
+    <SUITE FILE_PATH="coverage/python_spider$14.coverage" NAME="14 覆盖结果" MODIFIED="1753063837065" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/challenge" />
     <SUITE FILE_PATH="coverage/python_spider$1.coverage" NAME="1 覆盖结果" MODIFIED="1752046665144" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/challenge" />
     <SUITE FILE_PATH="coverage/python_spider$7.coverage" NAME="7 覆盖结果" MODIFIED="1752465516705" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/challenge" />
     <SUITE FILE_PATH="coverage/python_spider$6.coverage" NAME="6 覆盖结果" MODIFIED="1752227554467" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/challenge" />
-    <SUITE FILE_PATH="coverage/python_spider$11.coverage" NAME="11 覆盖结果" MODIFIED="1752750408952" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/challenge" />
+    <SUITE FILE_PATH="coverage/python_spider$12.coverage" NAME="12 覆盖结果" MODIFIED="1752824926716" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/challenge" />
+    <SUITE FILE_PATH="coverage/python_spider$11.coverage" NAME="11 覆盖结果" MODIFIED="1752820417667" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/challenge" />
     <SUITE FILE_PATH="coverage/python_spider$2.coverage" NAME="2 覆盖结果" MODIFIED="1752060364265" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/challenge" />
   </component>
 </project>
