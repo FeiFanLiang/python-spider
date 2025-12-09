@@ -165,15 +165,134 @@ var _parse = function (ciphertext, format) {
     }
 }
 
-var cipher_createDecryptor = function (key, cfg) {
+// var cipher_createDecryptor = function (key, cfg) {
 
-   var instance = {}
-    instance.cfg = cfg
-    instance._xformMode = 2
-    instance._key = key
+//    var instance = {}
+//     instance.cfg = cfg
+//     instance._xformMode = 2
+//     instance._key = key
 
-    return this.create(2, key, cfg);
+//     return this.create(2, key, cfg);
+// }
+
+var this_doReset = function(){
+    var t;
+
+    // Skip reset of nRounds has been set before and key did not change
+    if (this._nRounds && this._keyPriorReset === this._key) {
+        return;
+    }
+
+    // Shortcuts
+    var key = this._keyPriorReset = this._key;
+    var keyWords = key.words;
+    var keySize = key.sigBytes / 4;
+
+    // Compute number of rounds
+    var nRounds = this._nRounds = keySize + 6;
+
+    // Compute number of key schedule rows
+    var ksRows = (nRounds + 1) * 4;
+
+    // Compute key schedule
+    var keySchedule = this._keySchedule = [];
+    for (var ksRow = 0; ksRow < ksRows; ksRow++) {
+        if (ksRow < keySize) {
+            keySchedule[ksRow] = keyWords[ksRow];
+        } else {
+            t = keySchedule[ksRow - 1];
+
+            if (!(ksRow % keySize)) {
+                // Rot word
+                t = (t << 8) | (t >>> 24);
+
+                // Sub word
+                t = (SBOX[t >>> 24] << 24) | (SBOX[(t >>> 16) & 0xff] << 16) | (SBOX[(t >>> 8) & 0xff] << 8) | SBOX[t & 0xff];
+
+                // Mix Rcon
+                t ^= RCON[(ksRow / keySize) | 0] << 24;
+            } else if (keySize > 6 && ksRow % keySize == 4) {
+                // Sub word
+                t = (SBOX[t >>> 24] << 24) | (SBOX[(t >>> 16) & 0xff] << 16) | (SBOX[(t >>> 8) & 0xff] << 8) | SBOX[t & 0xff];
+            }
+
+            keySchedule[ksRow] = keySchedule[ksRow - keySize] ^ t;
+        }
+    }
+
+    // Compute inv key schedule
+    var invKeySchedule = this._invKeySchedule = [];
+    for (var invKsRow = 0; invKsRow < ksRows; invKsRow++) {
+        var ksRow = ksRows - invKsRow;
+
+        if (invKsRow % 4) {
+            var t = keySchedule[ksRow];
+        } else {
+            var t = keySchedule[ksRow - 4];
+        }
+
+        if (invKsRow < 4 || ksRow <= 4) {
+            invKeySchedule[invKsRow] = t;
+        } else {
+            invKeySchedule[invKsRow] = INV_SUB_MIX_0[SBOX[t >>> 24]] ^ INV_SUB_MIX_1[SBOX[(t >>> 16) & 0xff]] ^
+                                       INV_SUB_MIX_2[SBOX[(t >>> 8) & 0xff]] ^ INV_SUB_MIX_3[SBOX[t & 0xff]];
+        }
+    }
 }
+
+var Cipher_reset = function () {
+    // Reset data buffer
+    // BufferedBlockAlgorithm.reset.call(this); @params 暂时忽略 
+
+    // Perform concrete-cipher logic
+    this._doReset();
+}
+
+var this_reset = function(){
+    var modeCreator;
+
+    // Reset cipher
+    Cipher_reset(arguments);
+
+    // Shortcuts
+    var cfg = this.cfg;
+    var iv = cfg.iv;
+    var mode = cfg.mode;
+
+    // Reset block mode
+    if (this._xformMode == this._ENC_XFORM_MODE) {
+        modeCreator = mode.createEncryptor;
+    } else /* if (this._xformMode == this._DEC_XFORM_MODE) */ {
+        modeCreator = mode.createDecryptor;
+        // Keep at least one block in the buffer for unpadding
+        this._minBufferSize = 1;
+    }
+
+    if (this._mode && this._mode.__creator == modeCreator) {
+        this._mode.init(this, iv && iv.words);
+    } else {
+        this._mode = modeCreator.call(mode, this, iv && iv.words);
+        this._mode.__creator = modeCreator;
+    }
+}
+
+var this_create = function (xformMode, key, cfg) {
+    // this.cfg = this.cfg.extend(cfg);
+
+    // // Store transform mode and key
+    // this._xformMode = xformMode;
+    // this._key = key; @params 暂时忽略
+
+    // Set initial values
+    // this.reset();
+    this_reset(arguments);
+}
+
+
+var cipher_createDecryptor =  function (key, cfg) {
+    return this.create(this._DEC_XFORM_MODE, key, cfg);
+}
+
 
 var SerializableCipher_decrypt = function (cipher, ciphertext, key, cfg) {
     // Apply config defaults
@@ -184,7 +303,7 @@ var SerializableCipher_decrypt = function (cipher, ciphertext, key, cfg) {
     ciphertext = _parse(ciphertext, cfg.format);
     console.log(ciphertext)
     // Decrypt
-    var plaintext = cipher.createDecryptor(key, cfg).finalize(ciphertext.ciphertext);
+    var plaintext = cipher_createDecryptor(key, cfg).finalize(ciphertext.ciphertext);
 
     return plaintext;
 }
